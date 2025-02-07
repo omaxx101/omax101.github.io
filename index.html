@@ -10,11 +10,12 @@
             margin: 0;
             padding: 0;
             background-color: black;
+            color: white;
             transition: background-color 0.5s ease;
         }
         header {
             background-color: black;
-            color: gray;
+            color: #e60000;
             text-align: center;
             padding: 20px 0;
             transition: background-color 0.5s ease;
@@ -25,15 +26,15 @@
         section {
             padding: 20px;
             margin: 20px;
-            background-color: lightpink;
+            background-color: #222222;
             border-radius: 8px;
-            box-shadow: 0 4px 8px lightcoral;
+            box-shadow: 0 4px 8px #e60000;
         }
         h2 {
-            color: bisque;
+            color: #f2f2f2;
         }
         p {
-            color: red;
+            color: #ff3333;
         }
         .project-list {
             list-style-type: none;
@@ -42,39 +43,22 @@
         .project-list li {
             margin: 10px 0;
             padding: 10px;
-            background-color: #f9f9f9;
+            background-color: #333333;
             border-radius: 4px;
             transition: background-color 0.3s ease;
         }
         .project-list li:hover {
-            background-color: #e0f7fa;
+            background-color: #e60000;
+            color: black;
         }
         footer {
-            background-color: #333;
+            background-color: #222222;
             color: white;
             text-align: center;
             padding: 10px 0;
             position: fixed;
             width: 100%;
             bottom: 0;
-        }
-
-        /* Snake animation */
-        #snake {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: #76c7c0;
-            border-radius: 50%;
-            animation: snakeMovement 5s infinite linear;
-        }
-
-        @keyframes snakeMovement {
-            0% { top: 50%; left: 10%; }
-            25% { top: 10%; left: 50%; }
-            50% { top: 90%; left: 90%; }
-            75% { top: 10%; left: 90%; }
-            100% { top: 50%; left: 10%; }
         }
     </style>
 </head>
@@ -89,19 +73,12 @@
             <li><strong>Automated Elevator System</strong> - A project developed as part of my Principles of Automatic Control course, where I collaborated with teammates to design and implement an automated elevator system using Arduino Mega and optical encoders.</li>
             <li><strong>Environmental Impact Statement on Energy Efficiency</strong> - I wrote a detailed report analyzing the inefficiencies of power systems, exploring energy loss in electrical systems and its environmental impacts.</li>
             <li><strong>Robot Obstacle Avoidance System</strong> - Developed using an infrared sensor to prevent collisions and maneuver around obstacles. This was part of a hands-on robotics lab project in my Mechatronics Engineering Technology program.</li>
-            <li><strong>Webpage</strong> - I'm currently working on this app using github to help with creating a webpage .</li>
+            <li><strong>Webpage</strong> - I'm currently working on this app using github to help with creating a webpage.</li>
             <li><strong>1966 Porsche Boxer Engine CAD Design</strong> - A semester-long CAD and engine design project focused on recreating the 1966 Porsche boxer engine as part of my Engineering Graphics and CAD course.</li>
         </ul>
     </section>
 
-    <div id="snake"></div>
-
     <footer>
-        <p>Oumer's Projects Portfolio &copy; 2025</p>
-    </footer>
-</body>
-</html>
-
         <p>Oumer's Projects Portfolio &copy; 2025</p>
     </footer>
 </body>
