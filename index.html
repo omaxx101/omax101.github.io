@@ -10,18 +10,24 @@
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
+            transition: background-color 0.5s ease;
         }
         header {
             background-color: #333;
             color: white;
             text-align: center;
             padding: 20px 0;
+            transition: background-color 0.5s ease;
+        }
+        header:hover {
+            background-color: #444;
         }
         section {
             padding: 20px;
             margin: 20px;
             background-color: white;
             border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         h2 {
             color: #333;
@@ -35,6 +41,13 @@
         }
         .project-list li {
             margin: 10px 0;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        .project-list li:hover {
+            background-color: #e0f7fa;
         }
         footer {
             background-color: #333;
@@ -44,6 +57,24 @@
             position: fixed;
             width: 100%;
             bottom: 0;
+        }
+
+        /* Snake animation */
+        #snake {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #76c7c0;
+            border-radius: 50%;
+            animation: snakeMovement 5s infinite linear;
+        }
+
+        @keyframes snakeMovement {
+            0% { top: 50%; left: 10%; }
+            25% { top: 10%; left: 50%; }
+            50% { top: 90%; left: 90%; }
+            75% { top: 10%; left: 90%; }
+            100% { top: 50%; left: 10%; }
         }
     </style>
 </head>
@@ -63,7 +94,14 @@
         </ul>
     </section>
 
+    <div id="snake"></div>
+
     <footer>
+        <p>Oumer's Projects Portfolio &copy; 2025</p>
+    </footer>
+</body>
+</html>
+
         <p>Oumer's Projects Portfolio &copy; 2025</p>
     </footer>
 </body>
