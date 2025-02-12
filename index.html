@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oumer's Projects</title>
+    <title>Oumer's Portfolio - Elevator View</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,74 +12,144 @@
             background-color: black;
             color: white;
             transition: background-color 0.5s ease;
+            overflow-x: hidden;
         }
         header {
             background-color: black;
             color: #e60000;
             text-align: center;
             padding: 20px 0;
-            transition: background-color 0.5s ease;
-        }
-        header:hover {
-            background-color: #bc2020;
-        }
-        section {
-            padding: 20px;
-            margin: 20px;
-            background-color: #222222;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px #e60000;
-        }
-        h2 {
-            color: #f2f2f2;
-        }
-        p {
-            color: #ff3333;
-        }
-        .project-list {
-            list-style-type: none;
-            padding: 0;
-        }
-        .project-list li {
-            margin: 10px 0;
-            padding: 10px;
-            background-color: #333333;
-            border-radius: 4px;
-            transition: background-color 0.3s ease;
-        }
-        .project-list li:hover {
-            background-color: #e60000;
-            color: black;
-        }
-        footer {
-            background-color: #222222;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
             position: fixed;
             width: 100%;
-            bottom: 0;
+            top: 0;
+            z-index: 10;
+        }
+        .container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .elevator-shaft {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            width: 6px;
+            height: 100vh;
+            background: #e60000;
+            transform: translateX(-50%);
+            z-index: -1;
+        }
+        section {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+        .visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .project {
+            background-color: #222;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px #e60000;
+            width: 60%;
+        }
+        .nav-buttons {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+        .nav-buttons button {
+            background: #e60000;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        .nav-buttons button:hover {
+            background: white;
+            color: #e60000;
         }
     </style>
 </head>
 <body>
+
     <header>
-        <h1>Welcome to Oumer's Projects Portfolio</h1>
+        <h1>Oumer's Elevator Portfolio</h1>
     </header>
 
-    <section>
-        <h2>Recent Projects</h2>
-        <ul class="project-list">
-            <li><strong>Automated Elevator System</strong> - A project developed as part of my Principles of Automatic Control course, where I collaborated with teammates to design and implement an automated elevator system using Arduino Mega and optical encoders.</li>
-            <li><strong>Environmental Impact Statement on Energy Efficiency</strong> - I wrote a detailed report analyzing the inefficiencies of power systems, exploring energy loss in electrical systems and its environmental impacts.</li>
-            <li><strong>Robot Obstacle Avoidance System</strong> - Developed using an infrared sensor to prevent collisions and maneuver around obstacles. This was part of a hands-on robotics lab project in my Mechatronics Engineering Technology program.</li>
-            <li><strong>Webpage</strong> - I'm currently working on this app using github to help with creating a webpage.</li>
-            <li><strong>1966 Porsche Boxer Engine CAD Design</strong> - A semester-long CAD and engine design project focused on recreating the 1966 Porsche boxer engine as part of my Engineering Graphics and CAD course.</li>
-        </ul>
-    </section>
+    <div class="elevator-shaft"></div>
 
-    <footer>
-        <p>Oumer's Projects Portfolio &copy; 2025</p>
-    </footer>
+    <div class="container">
+        <section id="project1" class="project">
+            <h2>🏗 Automated Elevator System</h2>
+            <p>A project developed as part of my Principles of Automatic Control course, using Arduino Mega and optical encoders.</p>
+        </section>
+
+        <section id="project2" class="project">
+            <h2>🤖 Robot Obstacle Avoidance System</h2>
+            <p>Developed using an infrared sensor to prevent collisions and maneuver around obstacles.</p>
+        </section>
+
+        <section id="project3" class="project">
+            <h2>🚗 1966 Porsche Boxer Engine CAD Design</h2>
+            <p>Recreated the iconic 1966 Porsche Boxer Engine as part of my Engineering Graphics & CAD course.</p>
+        </section>
+    </div>
+
+    <div class="nav-buttons">
+        <button onclick="scrollUp()">⬆ Go Up</button>
+        <button onclick="scrollDown()">⬇ Go Down</button>
+    </div>
+
+    <script>
+        const sections = document.querySelectorAll("section");
+        let index = 0;
+
+        function showSection(i) {
+            sections.forEach((section, idx) => {
+                section.classList.remove("visible");
+                if (idx === i) {
+                    section.classList.add("visible");
+                    section.scrollIntoView({ behavior: "smooth" });
+                }
+            });
+        }
+
+        function scrollDown() {
+            if (index < sections.length - 1) {
+                index++;
+                showSection(index);
+            }
+        }
+
+        function scrollUp() {
+            if (index > 0) {
+                index--;
+                showSection(index);
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            showSection(0);
+        });
+    </script>
+
 </body>
 </html>
+
