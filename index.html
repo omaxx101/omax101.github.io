@@ -3,160 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oumer's Portfolio - Elevator View</title>
+    <title>Oumer's Portfolio</title>
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: black;
+            color: white;
             margin: 0;
             padding: 0;
-            background-color: black;
-            color: white;
-            transition: background-color 0.5s ease;
-            overflow-x: hidden;
+            text-align: center;
         }
         header {
-            background-color: black;
-            color: #e60000;
-            text-align: center;
-            padding: 20px 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 10;
-        }
-        .container {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
-        .elevator-shaft {
-            position: fixed;
-            top: 0;
-            left: 50%;
-            width: 6px;
-            height: 100vh;
-            background: #e60000;
-            transform: translateX(-50%);
-            z-index: -1;
+            background-color: #e60000;
+            padding: 20px;
+            font-size: 32px;
+            font-weight: 900;
         }
         section {
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 1s ease, transform 1s ease;
+            padding: 30px;
+            margin: 10px auto;
+            width: 80%;
+            border-radius: 8px;
         }
-        .visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .content-box {
+        .project {
             background-color: #222;
             padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px #e60000;
+            margin: 10px auto;
             width: 60%;
-        }
-        .nav-buttons {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 10px;
-        }
-        .nav-buttons button {
-            background: #e60000;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            font-size: 18px;
-            border-radius: 5px;
+            border-radius: 8px;
             transition: 0.3s;
         }
-        .nav-buttons button:hover {
-            background: white;
-            color: #e60000;
+        .project:hover {
+            background-color: #e60000;
+            color: black;
+            transform: scale(1.05);
+        }
+        footer {
+            background-color: #e60000;
+            padding: 10px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Oumer's Elevator Portfolio</h1>
+        Oumer's Portfolio
     </header>
 
-    <div class="elevator-shaft"></div>
+    <section id="about-me">
+        <h2>About Me</h2>
+        <p>Hey, I'm Oumer! I'm a Mechatronics Engineering Technology student with a minor in Robotics and Management. 
+           I have a passion for combining engineering and programming to solve real-world problems. 
+           I’ve worked on projects ranging from robotics to CAD engine design, and I love learning and applying new skills.</p>
+        <p>Scroll down to see my projects!</p>
+    </section>
 
-    <div class="container">
-        <section id="about-me" class="content-box">
-            <h2>👋 About Me</h2>
-            <p>Hey, I'm Oumer! I'm a Mechatronics Engineering Technology student with a minor in Robotics and Management. 
-                I have a passion for combining engineering and programming to solve real-world problems. 
-                I’ve worked on projects ranging from robotics to CAD engine design, and I love learning and applying new skills.</p>
-            <p>Scroll down to check out my projects! 🚀</p>
-        </section>
+    <section id="projects">
+        <h2>My Projects</h2>
 
-        <section id="project1" class="content-box">
-            <h2>🏗 Automated Elevator System</h2>
+        <div class="project">
+            <h3>🏗 Automated Elevator System</h3>
             <p>A project developed as part of my Principles of Automatic Control course, using Arduino Mega and optical encoders.</p>
-        </section>
+        </div>
 
-        <section id="project2" class="content-box">
-            <h2>🤖 Robot Obstacle Avoidance System</h2>
+        <div class="project">
+            <h3>🤖 Robot Obstacle Avoidance System</h3>
             <p>Developed using an infrared sensor to prevent collisions and maneuver around obstacles.</p>
-        </section>
+        </div>
 
-        <section id="project3" class="content-box">
-            <h2>🚗 1966 Porsche Boxer Engine CAD Design</h2>
+        <div class="project">
+            <h3>🚗 1966 Porsche Boxer Engine CAD Design</h3>
             <p>Recreated the iconic 1966 Porsche Boxer Engine as part of my Engineering Graphics & CAD course.</p>
-        </section>
-    </div>
+        </div>
 
-    <div class="nav-buttons">
-        <button onclick="scrollUp()">⬆ Go Up</button>
-        <button onclick="scrollDown()">⬇ Go Down</button>
-    </div>
+        <div class="project">
+            <h3>💡 Demo Project 1</h3>
+            <p>Description of a future project that I will add later.</p>
+        </div>
 
-    <script>
-        const sections = document.querySelectorAll("section");
-        let index = 0;
+        <div class="project">
+            <h3>💡 Demo Project 2</h3>
+            <p>Description of another future project to be added.</p>
+        </div>
 
-        function showSection(i) {
-            sections.forEach((section, idx) => {
-                section.classList.remove("visible");
-                if (idx === i) {
-                    section.classList.add("visible");
-                    section.scrollIntoView({ behavior: "smooth" });
-                }
-            });
-        }
+    </section>
 
-        function scrollDown() {
-            if (index < sections.length - 1) {
-                index++;
-                showSection(index);
-            }
-        }
-
-        function scrollUp() {
-            if (index > 0) {
-                index--;
-                showSection(index);
-            }
-        }
-
-        document.addEventListener("DOMContentLoaded", () => {
-            showSection(0);
-        });
-    </script>
+    <footer>
+        &copy; 2025 Oumer | All Rights Reserved
+    </footer>
 
 </body>
 </html>
