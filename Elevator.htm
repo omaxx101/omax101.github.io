@@ -3,60 +3,119 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Elevator Portfolio – Floor 1</title>
+  <title>Oumer's Portfolio – Ground Floor</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: linear-gradient(#111, #222);
+      overflow: hidden;
+    }
+
+    /* Elevator door container */
+    .elevator {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #111;
+      z-index: 50;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .door {
+      position: absolute;
+      top: 0;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(145deg, #555, #2b2b2b);
+      border: 3px solid #222;
+      box-shadow: inset 0 0 30px rgba(0,0,0,0.7);
+      transition: transform 2s ease-in-out;
+      z-index: 60;
+    }
+
+    .door.left {
+      left: 0;
+      transform: translateX(0);
+    }
+    .door.right {
+      right: 0;
+      transform: translateX(0);
+    }
+
+    /* When doors open */
+    .open .door.left {
+      transform: translateX(-100%);
+    }
+    .open .door.right {
+      transform: translateX(100%);
+    }
+
+    /* About Me section */
+    .about {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 1s ease-in-out 1.5s, transform 1s ease-in-out 1.5s;
+    }
+
+    .show-about {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Elevator text on doors */
+    .door-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #eee;
+      font-size: 2rem;
+      font-weight: bold;
+      font-family: 'Segoe UI', sans-serif;
+      letter-spacing: 2px;
+    }
+  </style>
 </head>
-<body class="bg-gray-900 flex items-center justify-center min-h-screen">
 
-  <!-- Elevator Panel -->
-  <div class="bg-gray-800 rounded-3xl shadow-2xl p-10 w-[400px] h-[700px] border-4 border-gray-600 relative">
+<body class="flex flex-col items-center justify-center min-h-screen text-white">
 
-    <!-- Digital Floor Display -->
-    <div class="bg-black text-green-400 text-5xl font-mono text-center py-4 rounded-lg mb-8 shadow-inner">
-      1
-    </div>
-
-    <!-- Elevator Title -->
-    <h1 class="text-white text-3xl font-bold text-center mb-6">Elevator System Project</h1>
-
-    <!-- Project Details (Revealed when button is pressed) -->
-    <div id="project-details" class="hidden bg-gray-700 text-white rounded-lg p-5 text-lg leading-relaxed">
-      <h2 class="text-2xl font-semibold mb-3">🛗 Automated Elevator System</h2>
-      <p class="mb-4">
-        This project was designed for our <strong>MECH 3100 – Principles of Automatic Control</strong> class.
-        It uses an <strong>Arduino Mega</strong>, optical encoders, and sensors to automate floor detection and
-        movement. The system mimics a real-world elevator with safety checks, obstacle detection, and
-        button-controlled navigation.
-      </p>
-      <p>
-        🔧 Components: Arduino Mega, Optical Encoders, IR Sensors, VEX & LEGO components <br />
-        🧠 Features: Obstacle avoidance, multi-floor control, automatic door system
-      </p>
-    </div>
-
-    <!-- Elevator Button -->
-    <div class="flex justify-center mt-10">
-      <button 
-        id="floor1-btn" 
-        class="bg-red-600 hover:bg-red-700 text-white text-2xl font-bold rounded-full w-20 h-20 shadow-lg transition transform hover:scale-110 active:scale-95"
-      >
-        1
-      </button>
-    </div>
-
-    <!-- Label -->
-    <p class="text-center text-gray-400 mt-3">Press to view project</p>
-
+  <!-- Elevator Doors -->
+  <div id="elevator" class="elevator">
+    <div class="door left"><div class="door-text">O</div></div>
+    <div class="door right"><div class="door-text">H</div></div>
   </div>
 
+  <!-- About Me Section -->
+  <section id="about" class="about max-w-3xl text-center px-6">
+    <h1 class="text-5xl font-bold mb-4 text-red-500">About Me</h1>
+    <p class="text-lg leading-relaxed">
+      I am <span class="font-semibold text-red-400">Oumer</span>, a Mechatronics Engineering Technology student with a minor in Robotics and Management.
+      My expertise lies in integrating engineering principles with programming to develop innovative solutions.
+      With experience in robotics, CAD modeling, and automation, I am passionate about applying technology
+      to solve real-world challenges. Explore my projects above to see my work in action.
+    </p>
+  </section>
+
   <script>
-    // Reveal project details on button press
-    document.getElementById("floor1-btn").addEventListener("click", () => {
-      const details = document.getElementById("project-details");
-      details.classList.toggle("hidden");
+    window.addEventListener("load", () => {
+      const elevator = document.getElementById("elevator");
+      const about = document.getElementById("about");
+
+      // Trigger doors to open after 1 second
+      setTimeout(() => {
+        elevator.classList.add("open");
+      }, 1000);
+
+      // Show About section after doors are open
+      setTimeout(() => {
+        about.classList.add("show-about");
+        elevator.style.opacity = "0";
+        setTimeout(() => elevator.style.display = "none", 1000);
+      }, 3000); // 2s door animation + 1s delay
     });
   </script>
 
 </body>
 </html>
-
