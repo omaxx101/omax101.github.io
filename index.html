@@ -1,122 +1,27 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Oumer — Elevator Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="index.css" />
 </head>
 <body>
-  <div class="page-wrap">
-    <!-- Left decorative rail -->
-    <div class="rail rail-left"></div>
-
-    <!-- Elevator shaft -->
-    <main class="shaft" id="shaft">
-      <!-- Shaft inner track containing floors stacked vertically -->
-      <div class="track" id="track">
-        <!-- Ground (G) - About Me -->
-        <section class="floor floor-ground" data-floor="G">
-          <div class="floor-content">
-            <h1>About Me</h1>
-            <p>
-              I am Oumer, a Mechatronics Engineering Technology student with a minor in Robotics and Management.
-              My expertise lies in integrating engineering principles with programming to develop innovative solutions.
-              With experience in robotics, CAD modeling, and automation, I am passionate about applying technology
-              to solve real-world challenges. Explore my projects by taking the elevator up.
-            </p>
-          </div>
-        </section>
-
-        <!-- Floor 1 -->
-        <section class="floor" data-floor="1">
-          <div class="floor-content">
-            <h1>Floor 1 — Automated Elevator System</h1>
-            <h3>🏗 Automated Elevator System</h3>
-            <p>
-              A project developed as part of my Principles of Automatic Control course, using Arduino Mega and optical encoders.
-            </p>
-            <a class="proj-link" href="#">View Project 1</a>
-          </div>
-        </section>
-
-        <!-- Floor 2 -->
-        <section class="floor" data-floor="2">
-          <div class="floor-content">
-            <h1>Floor 2 — Maze Solver Robot</h1>
-            <h3>🤖 Maze Solver Robot</h3>
-            <p>
-              Developed using infrared sensors to prevent collisions and navigate mazes autonomously.
-            </p>
-            <a class="proj-link" href="#">View Project 2</a>
-          </div>
-        </section>
-
-        <!-- Floor 3 -->
-        <section class="floor" data-floor="3">
-          <div class="floor-content">
-            <h1>Floor 3 — 1966 Porsche Boxer CAD</h1>
-            <h3>🚗 1966 Porsche Boxer Engine CAD Design</h3>
-            <p>
-              Recreated the iconic 1966 Porsche Boxer Engine as part of my Engineering Graphics & CAD course.
-            </p>
-            <a class="proj-link" href="#">View Project 3</a>
-          </div>
-        </section>
-
-        <!-- Floor 4 -->
-        <section class="floor" data-floor="4">
-          <div class="floor-content">
-            <h1>Floor 4 — Arctos Robot Arm</h1>
-            <h3>🤖 Arctos Robot Arm</h3>
-            <p>
-              An Arctos robot arm customized for a robotics systems school project.
-            </p>
-            <a class="proj-link" href="#">View Project 4</a>
-          </div>
-        </section>
-
-        <!-- Floor 5 -->
-        <section class="floor" data-floor="5">
-          <div class="floor-content">
-            <h1>Floor 5 — Snake Game</h1>
-            <h3>🐍 Snake Game (Python)</h3>
-            <p>
-              Classic snake game implemented in Python with a small user-data registry for high scores.
-            </p>
-            <a class="proj-link" href="#">View Project 5</a>
-          </div>
-        </section>
+  <div class="scene">
+    <!-- Elevator Wall -->
+    <div class="wall">
+      <div class="elevator-frame">
+        <div class="door left-door"></div>
+        <div class="door right-door"></div>
       </div>
+      <div class="floor-display">G</div>
+      <div class="call-button"></div>
+    </div>
 
-      <!-- Elevator frame overlay (gives the 'car window' look) -->
-      <div class="car-window" aria-hidden="true"></div>
-    </main>
-
-    <!-- Right metal rail -->
-    <div class="rail rail-right"></div>
-
-    <!-- Side control panel -->
-    <aside class="control-panel" id="controlPanel" aria-label="Elevator controls">
-      <div class="panel-top">
-        <div class="indicator" id="indicator">G</div>
-        <div class="panel-title">Oumer's Elevator</div>
-      </div>
-      <div class="buttons" id="buttons">
-        <button class="btn floor-btn" data-target="G">G</button>
-        <button class="btn floor-btn" data-target="1">1</button>
-        <button class="btn floor-btn" data-target="2">2</button>
-        <button class="btn floor-btn" data-target="3">3</button>
-        <button class="btn floor-btn" data-target="4">4</button>
-        <button class="btn floor-btn" data-target="5">5</button>
-      </div>
-
-      <div class="panel-footer">
-        <small>&copy; 2025 Oumer</small>
-      </div>
-    </aside>
+    <!-- Enter Button -->
+    <div class="enter-container">
+      <a href="elevator.html" class="enter-btn">🚪 Enter Elevator</a>
+    </div>
   </div>
-
-  <script src="script.js"></script>
 </body>
 </html>
