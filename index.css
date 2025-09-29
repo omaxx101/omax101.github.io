@@ -1,0 +1,109 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(#111, #333);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.scene {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wall {
+  width: 400px;
+  height: 600px;
+  background: linear-gradient(145deg, #888, #555);
+  border: 10px solid #444;
+  border-radius: 20px;
+  position: relative;
+  perspective: 800px;
+  box-shadow: inset 0 0 30px rgba(0,0,0,0.7);
+}
+
+/* Elevator doors */
+.elevator-frame {
+  width: 80%;
+  height: 75%;
+  background: #222;
+  margin: 40px auto;
+  display: flex;
+  position: relative;
+  transform: translateZ(20px) rotateX(2deg);
+  border: 4px solid #333;
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
+}
+
+.door {
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(180deg, #666, #444);
+  border: 2px solid #333;
+  transition: transform 1s ease-in-out;
+}
+
+.left-door {
+  border-right: none;
+  transform-origin: left;
+}
+
+.right-door {
+  border-left: none;
+  transform-origin: right;
+}
+
+/* Display */
+.floor-display {
+  position: absolute;
+  top: 15px;
+  right: 30px;
+  background: #111;
+  color: limegreen;
+  font-size: 2rem;
+  padding: 5px 15px;
+  border-radius: 10px;
+  font-family: monospace;
+  box-shadow: inset 0 0 10px #000;
+}
+
+/* Call button */
+.call-button {
+  position: absolute;
+  bottom: 40px;
+  right: 35px;
+  width: 25px;
+  height: 25px;
+  background: radial-gradient(circle at 30% 30%, #ff4444, #770000);
+  border-radius: 50%;
+  box-shadow: 0 0 10px red, inset 0 0 5px #000;
+}
+
+/* Enter button */
+.enter-container {
+  margin-top: 40px;
+}
+
+.enter-btn {
+  text-decoration: none;
+  background: linear-gradient(90deg, #ff4747, #c40000);
+  padding: 15px 40px;
+  font-size: 1.5rem;
+  color: #fff;
+  border-radius: 30px;
+  box-shadow: 0 4px 15px rgba(255,0,0,0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.enter-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(255,0,0,0.6);
+}
