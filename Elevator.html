@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Elevator Portfolio – Floor 1</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 flex items-center justify-center min-h-screen">
+
+  <!-- Elevator Panel -->
+  <div class="bg-gray-800 rounded-3xl shadow-2xl p-10 w-[400px] h-[700px] border-4 border-gray-600 relative">
+
+    <!-- Digital Floor Display -->
+    <div class="bg-black text-green-400 text-5xl font-mono text-center py-4 rounded-lg mb-8 shadow-inner">
+      1
+    </div>
+
+    <!-- Elevator Title -->
+    <h1 class="text-white text-3xl font-bold text-center mb-6">Elevator System Project</h1>
+
+    <!-- Project Details (Revealed when button is pressed) -->
+    <div id="project-details" class="hidden bg-gray-700 text-white rounded-lg p-5 text-lg leading-relaxed">
+      <h2 class="text-2xl font-semibold mb-3">🛗 Automated Elevator System</h2>
+      <p class="mb-4">
+        This project was designed for our <strong>MECH 3100 – Principles of Automatic Control</strong> class.
+        It uses an <strong>Arduino Mega</strong>, optical encoders, and sensors to automate floor detection and
+        movement. The system mimics a real-world elevator with safety checks, obstacle detection, and
+        button-controlled navigation.
+      </p>
+      <p>
+        🔧 Components: Arduino Mega, Optical Encoders, IR Sensors, VEX & LEGO components <br />
+        🧠 Features: Obstacle avoidance, multi-floor control, automatic door system
+      </p>
+    </div>
+
+    <!-- Elevator Button -->
+    <div class="flex justify-center mt-10">
+      <button 
+        id="floor1-btn" 
+        class="bg-red-600 hover:bg-red-700 text-white text-2xl font-bold rounded-full w-20 h-20 shadow-lg transition transform hover:scale-110 active:scale-95"
+      >
+        1
+      </button>
+    </div>
+
+    <!-- Label -->
+    <p class="text-center text-gray-400 mt-3">Press to view project</p>
+
+  </div>
+
+  <script>
+    // Reveal project details on button press
+    document.getElementById("floor1-btn").addEventListener("click", () => {
+      const details = document.getElementById("project-details");
+      details.classList.toggle("hidden");
+    });
+  </script>
+
+</body>
+</html>
+
