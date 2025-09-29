@@ -53,13 +53,13 @@
     }
 
     /* About Me section */
-    .about {
+    .about, .floor-content {
       opacity: 0;
       transform: translateY(50px);
       transition: opacity 1s ease-in-out 1.5s, transform 1s ease-in-out 1.5s;
     }
 
-    .show-about {
+    .show {
       opacity: 1;
       transform: translateY(0);
     }
@@ -76,6 +76,41 @@
       font-family: 'Segoe UI', sans-serif;
       letter-spacing: 2px;
     }
+
+    /* Floor buttons */
+    #floor-buttons {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 100;
+    }
+
+    .floor-btn {
+      background: linear-gradient(90deg, #ff4747, #c40000);
+      color: #fff;
+      font-weight: bold;
+      padding: 10px 20px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-family: 'Segoe UI', sans-serif;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .floor-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 10px rgba(255,0,0,0.6);
+    }
+
+    /* Floor content placeholder */
+    .floor-content {
+      max-width: 3xl;
+      text-align: center;
+      padding: 2rem;
+    }
   </style>
 </head>
 
@@ -87,8 +122,18 @@
     <div class="door right"><div class="door-text">H</div></div>
   </div>
 
-  <!-- About Me Section -->
-  <section id="about" class="about max-w-3xl text-center px-6">
+  <!-- Floor Buttons -->
+  <div id="floor-buttons">
+    <button class="floor-btn" data-floor="G">G</button>
+    <button class="floor-btn" data-floor="1">1</button>
+    <button class="floor-btn" data-floor="2">2</button>
+    <button class="floor-btn" data-floor="3">3</button>
+    <button class="floor-btn" data-floor="4">4</button>
+    <button class="floor-btn" data-floor="5">5</button>
+  </div>
+
+  <!-- Ground Floor (About Me) -->
+  <section id="about" class="floor-content show">
     <h1 class="text-5xl font-bold mb-4 text-red-500">About Me</h1>
     <p class="text-lg leading-relaxed">
       I am <span class="font-semibold text-red-400">Oumer</span>, a Mechatronics Engineering Technology student with a minor in Robotics and Management.
@@ -98,24 +143,90 @@
     </p>
   </section>
 
+  <!-- Other Floors Placeholder -->
+  <section id="floor-1" class="floor-content">
+    <h1 class="text-5xl font-bold mb-4 text-blue-400">Floor 1</h1>
+    <p>Projects and portfolio content for Floor 1.</p>
+  </section>
+
+  <section id="floor-2" class="floor-content">
+    <h1 class="text-5xl font-bold mb-4 text-green-400">Floor 2</h1>
+    <p>Projects and portfolio content for Floor 2.</p>
+  </section>
+
+  <section id="floor-3" class="floor-content">
+    <h1 class="text-5xl font-bold mb-4 text-yellow-400">Floor 3</h1>
+    <p>Projects and portfolio content for Floor 3.</p>
+  </section>
+
+  <section id="floor-4" class="floor-content">
+    <h1 class="text-5xl font-bold mb-4 text-purple-400">Floor 4</h1>
+    <p>Projects and portfolio content for Floor 4.</p>
+  </section>
+
+  <section id="floor-5" class="floor-content">
+    <h1 class="text-5xl font-bold mb-4 text-pink-400">Floor 5</h1>
+    <p>Projects and portfolio content for Floor 5.</p>
+  </section>
+
   <script>
+    const elevator = document.getElementById("elevator");
+    const floorButtons = document.querySelectorAll(".floor-btn");
+    const floors = {
+      "G": document.getElementById("about"),
+      "1": document.getElementById("floor-1"),
+      "2": document.getElementById("floor-2"),
+      "3": document.getElementById("floor-3"),
+      "4": document.getElementById("floor-4"),
+      "5": document.getElementById("floor-5")
+    };
+
+    // Initialize: show Ground floor
+    let currentFloor = "G";
+    Object.values(floors).forEach(f => f.classList.remove("show"));
+    floors[currentFloor].classList.add("show");
+
+    // Floor button click handler
+    floorButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const selectedFloor = btn.dataset.floor;
+        if (selectedFloor === currentFloor) return; // already on this floor
+
+        // Animate doors closing
+        elevator.style.display = "flex";
+        elevator.style.opacity = "1";
+        elevator.classList.remove("open");
+
+        // Wait for door animation, then switch content
+        setTimeout(() => {
+          // Hide current floor
+          floors[currentFloor].classList.remove("show");
+          // Show new floor
+          floors[selectedFloor].classList.add("show");
+          // Animate doors opening
+          elevator.classList.add("open");
+        }, 500);
+
+        // Hide elevator after animation
+        setTimeout(() => {
+          elevator.style.opacity = "0";
+        }, 2500);
+        setTimeout(() => {
+          elevator.style.display = "none";
+        }, 3000);
+
+        currentFloor = selectedFloor;
+      });
+    });
+
+    // Initial doors animation on page load
     window.addEventListener("load", () => {
-      const elevator = document.getElementById("elevator");
-      const about = document.getElementById("about");
-
-      // Trigger doors to open after 1 second
+      setTimeout(() => elevator.classList.add("open"), 1000);
       setTimeout(() => {
-        elevator.classList.add("open");
-      }, 1000);
-
-      // Show About section after doors are open
-      setTimeout(() => {
-        about.classList.add("show-about");
         elevator.style.opacity = "0";
         setTimeout(() => elevator.style.display = "none", 1000);
-      }, 3000); // 2s door animation + 1s delay
+      }, 3000);
     });
   </script>
-
 </body>
 </html>
