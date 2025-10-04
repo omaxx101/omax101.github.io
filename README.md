@@ -1,3 +1,5 @@
-# Oumer's Project Portfolio 🚀
+# Portfolio
+Oumer's Portfolio 
+*Updated as of 10/04/25*  
 
-Welcome to my GitHub profile! This page serves as a portfolio showcasing my projects in **Mechatronics Engineering, Robotics, Web Development, and CAD Designs**.
+---
